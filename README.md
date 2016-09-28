@@ -1,4 +1,4 @@
-# [Chrome desktopCapture extension](https://github.com/muaz-khan/Chrome-Extensions/tree/master/desktopCapture-p2p)
+# [TESSA Screen Share extension](https://github.com/4LOOPph/desktopCapture-p2p)
 
 This chrome extension not only captures content of screen, but also provides multi-user peer-to-peer screen streaming.
 
@@ -13,10 +13,7 @@ This chrome extension not only captures content of screen, but also provides mul
 Try any of the below URL. Replace `your_room_id` with real room-id:
 
 ```
-https://rtcxp.com/screen?s=your_room_id
-https://www.webrtc-experiment.com/!/?s=your_room_id
-https://cdn.webrtc-experiment.com/!/?s=your_room_id
-https://cdn.rawgit.com/muaz-khan/Chrome-Extensions/master/desktopCapture-p2p/viewer.html
+http://4loopph.github.io/projects/projects/tessa/presentation.html?s=your_room_id
 ```
 
 ## How to publish yourself?
@@ -68,11 +65,3 @@ To learn more about how to publish a chrome extension in Google App Store:
     </body>
 </html>
 ```
-
-## For more information
-
-For additional information, click [this link](https://github.com/muaz-khan/WebRTC-Experiment/blob/7cd04a81b30cdca2db159eb746e2714307640767/Chrome-Extensions/desktopCapture/README.md).
-
-## License
-
-[Chrome-Extensions](https://github.com/muaz-khan/Chrome-Extensions) are released under [MIT licence](https://www.webrtc-experiment.com/licence/) . Copyright (c) [Muaz Khan](https://plus.google.com/+MuazKhan).
