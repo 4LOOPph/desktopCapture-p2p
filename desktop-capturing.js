@@ -462,7 +462,8 @@ function setupRTCMultiConnection(stream) {
             dontTransmit: true
         });
 
-        var resultingURL = 'http://4loopph.github.io/projects/projects/tessa/presentation.html?s=' + connection.sessionid;
+        // var resultingURL = 'http://4loopph.github.io/projects/projects/tessa/presentation.html?s=' + connection.sessionid;
+        var resultingURL = 'http://4loopph.github.io/projects/projects/tessa/presentation.html?s=tEs$@486759';
         // var resultingURL = 'http://localhost:9003/presentation.html?s=' + connection.sessionid;
 
         if (room_password && room_password.length) {
