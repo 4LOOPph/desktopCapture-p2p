@@ -1,0 +1,33 @@
+{
+	"name" : "TESSA Presentation",
+    "author": "4LOOP",
+	"version" : "1.0",
+	"manifest_version" : 2,
+    "minimum_chrome_version": "34",
+    "homepage_url": "https://github.com/4LOOPPH/Chrome-Extensions/tree/master/desktopCapture-p2p",
+	"background": {
+		"scripts": ["websocket.js", "RTCMultiConnection.min.js", "CodecsHandler.js", "desktop-capturing.js"],
+		"persistent": false
+	},
+	"browser_action" : {
+		"default_icon" : "img/desktopCapture22.png",
+		"default_title" : "Share Desktop!"
+	},
+	"icons" : {
+		"16" : "img/desktopCapture16.png",
+		"22" : "img/desktopCapture22.png",
+		"32" : "img/desktopCapture32.png",
+		"48" : "img/desktopCapture48.png",
+		"128": "img/desktopCapture128.png"
+	},
+	"permissions": [
+		"desktopCapture", "storage"
+	],
+	"web_accessible_resources": [
+		"img/desktopCapture48.png"
+	],
+    "options_ui": {
+       "page": "options.html",
+       "chrome_style": true
+    }
+}
