@@ -7,15 +7,29 @@
 
 chrome.browserAction.onClicked.addListener(captureDesktop);
 
+chrome.runtime.onMessage.addListener(function(req, sender, callback) {
+    console.log('onMessage req: ', req);
+    console.log('onMessage sender: ', sender);
+
+    captureDesktop();
+});
+
+chrome.runtime.onMessageExternal.addListener(function(request, sender, sendResponse) {
+    console.log('onMessage request: ', request);
+    console.log('onMessage sender: ', sender);
+
+    captureDesktop();
+});
+
 window.addEventListener('offline', function() {
-    if(!connection || !connection.attachStreams.length) return;
+    if (!connection || !connection.attachStreams.length) return;
 
     setDefaults();
     chrome.runtime.reload();
 }, false);
 
 window.addEventListener('online', function() {
-    if(!connection) return;
+    if (!connection) return;
 
     setDefaults();
     chrome.runtime.reload();
@@ -356,18 +370,18 @@ function setupRTCMultiConnection(stream) {
 
     var text = '-';
     (function looper() {
-        if(!connection) {
+        if (!connection) {
             setBadgeText('');
             return;
         }
 
-        if(connection.isInitiator) {
+        if (connection.isInitiator) {
             setBadgeText('0');
             return;
         }
 
         text += ' -';
-        if(text.length > 6) {
+        if (text.length > 6) {
             text = '-';
         }
 
@@ -548,10 +562,10 @@ if (matchArray && matchArray[2]) {
 }
 
 // Check whether new version is installed
-chrome.runtime.onInstalled.addListener(function(details){
-    if(details.reason == 'install'){
+chrome.runtime.onInstalled.addListener(function(details) {
+    if (details.reason == 'install') {
         chrome.tabs.create({
             url: 'chrome://extensions/?options=' + chrome.runtime.id
-          });
+        });
     }
 });

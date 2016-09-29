@@ -1,10 +1,11 @@
 {
 	"name" : "TESSA Presentation",
     "author": "4LOOP",
-	"version" : "1.0",
+	"version" : "1.2",
 	"manifest_version" : 2,
     "minimum_chrome_version": "34",
-    "homepage_url": "https://github.com/4LOOPPH/Chrome-Extensions/tree/master/desktopCapture-p2p",
+    "description" : "Capture full-screen or specific application's screen on any HTTPs domain!",
+    "homepage_url": "https://github.com/4LOOPph/desktopCapture-p2p",
 	"background": {
 		"scripts": ["websocket.js", "RTCMultiConnection.min.js", "CodecsHandler.js", "desktop-capturing.js"],
 		"persistent": false
