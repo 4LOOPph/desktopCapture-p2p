@@ -7,16 +7,13 @@
 
 chrome.browserAction.onClicked.addListener(captureDesktop);
 
-chrome.runtime.onMessage.addListener(function(req, sender, callback) {
-    console.log('onMessage req: ', req);
-    console.log('onMessage sender: ', sender);
-
-    captureDesktop();
-});
+var openpluginURL = '';
 
 chrome.runtime.onMessageExternal.addListener(function(request, sender, sendResponse) {
-    console.log('onMessage request: ', request);
-    console.log('onMessage sender: ', sender);
+    console.log('onMessageExternal request: ',request);
+    console.log('onMessageExternal sender: ',sender);
+
+    openpluginURL = request.openplugin;
 
     captureDesktop();
 });
@@ -68,7 +65,7 @@ var constraints;
 var min_bandwidth = 512;
 var max_bandwidth = 1048;
 var room_password = '';
-var room_id = '';
+var room_id = 'tEs$@486759';
 var isAudio = false;
 
 function onAccessApproved(chromeMediaSourceId) {
@@ -180,7 +177,7 @@ function onAccessApproved(chromeMediaSourceId) {
         }
 
         chrome.browserAction.setTitle({
-            title: 'Connecting Server...'
+            title: 'Connecting to WebSockets server.'
         });
 
         chrome.browserAction.disable();
@@ -439,7 +436,7 @@ function setupRTCMultiConnection(stream) {
     websocket.onerror = function() {
         if (!!connection && connection.attachStreams.length) {
             chrome.windows.create({
-                url: "data:text/html,<h1>Failed connecting the Screen. Please click screen icon to try again.</h1>",
+                url: "data:text/html,<h1>Failed connecting the WebSockets server. Please click screen icon to try again.</h1>",
                 type: 'popup',
                 width: screen.width / 2,
                 height: 170
@@ -453,7 +450,7 @@ function setupRTCMultiConnection(stream) {
     websocket.onclose = function() {
         if (!!connection && connection.attachStreams.length) {
             chrome.windows.create({
-                url: "data:text/html,<p style='font-size:25px;'><span style='color:red;'>Unable to reach the Screen</span>. WebSockets is required/used to help opening media ports between your system and target users' systems (for p2p-streaming).<br><br>Please <span style='color:green;'>click screen icon</span> to share again.</p>",
+                url: "data:text/html,<p style='font-size:25px;'><span style='color:red;'>Unable to reach the WebSockets server</span>. WebSockets is required/used to help opening media ports between your system and target users' systems (for p2p-streaming).<br><br>Please <span style='color:green;'>click screen icon</span> to share again.</p>",
                 type: 'popup',
                 width: screen.width / 2,
                 height: 200
@@ -469,16 +466,18 @@ function setupRTCMultiConnection(stream) {
 
         setBadgeText(0);
 
-        console.info('Screen Sharing is opened.');
+        console.info('WebSockets connection is opened.');
 
         // www.RTCMultiConnection.org/docs/open/
         var sessionDescription = connection.open({
             dontTransmit: true
         });
 
+        // var resultingURL = 'https://rtcxp.com/screen?s=' + connection.sessionid;
         // var resultingURL = 'http://4loopph.github.io/projects/projects/tessa/presentation.html?s=' + connection.sessionid;
-        var resultingURL = 'http://4loopph.github.io/projects/projects/tessa/presentation.html?s=tEs$@486759';
-        // var resultingURL = 'http://localhost:9003/presentation.html?s=' + connection.sessionid;
+        // var resultingURL = window.location.origin + window.location.pathname + 'presentation.html?s=' + connection.sessionid;
+        var resultingURL = openpluginURL + 'presentation.html?s=' + connection.sessionid;
+
 
         if (room_password && room_password.length) {
             resultingURL += '&p=' + room_password;
