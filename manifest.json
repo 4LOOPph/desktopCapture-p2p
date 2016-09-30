@@ -1,7 +1,7 @@
 {
     "name": "TESSA Presentation",
     "author": "4LOOP",
-    "version": "1.4",
+    "version": "1.5",
     "manifest_version": 2,
     "minimum_chrome_version": "34",
     "description": "Capture full-screen or specific application's screen on any HTTPs domain!",
@@ -25,7 +25,8 @@
         "desktopCapture", "storage"
     ],
     "web_accessible_resources": [
-        "images/desktopCapture48.png"
+        "images/desktopCapture48.png",
+        "img/desktopCapture48.png"
     ],
     "externally_connectable": {
         "matches": ["http://localhost/*", "*://4loopph.github.io/projects/*", "*://*.tessa.cc/*"]
