@@ -487,7 +487,7 @@ function setupRTCMultiConnection(stream) {
         var popup_height = 170;
 
         chrome.windows.create({
-            url: "data:text/html,<title>Unique Room URL</title><h1 style='text-align:center'>Copy following private URL:</h1><input type='text' value='" + resultingURL + "' style='text-align:center;width:100%;font-size:1.2em;'><p style='text-align:center'>You can share this private-session URI with fellows using email or social networks.</p>",
+            url: "data:text/html,<title>Presentation Started</title><h1 style='text-align:center'>Presentation Started at:</h1><input type='text' value='" + resultingURL + "' style='text-align:center;width:100%;font-size:1.2em;'><p style='text-align:center'>You can share this private-session URI with fellows using email or social networks.</p>",
             type: 'popup',
             width: popup_width,
             height: popup_height,
