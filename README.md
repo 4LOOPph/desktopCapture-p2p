@@ -6,14 +6,18 @@ This chrome extension not only captures content of screen, but also provides mul
 
 <a target="_blank" href="https://chrome.google.com/webstore/detail/webrtc-desktop-sharing/klaagnfcilpkdeicdamepejjmaoahple"><img alt="Try it now" src="https://raw.github.com/GoogleChrome/chrome-app-samples/master/tryitnowbutton_small.png" title="Click here to install this sample from the Chrome Web Store"></img></a>
 
-* https://chrome.google.com/webstore/detail/webrtc-desktop-sharing/klaagnfcilpkdeicdamepejjmaoahple
+* https://chrome.google.com/webstore/detail/tessa-presentation/abggimbnoanedfgibfmkilplcmehkfln
 
 ## How to view screen?
 
 Try any of the below URL. Replace `your_room_id` with real room-id:
 
 ```
-http://4loopph.github.io/projects/projects/tessa/presentation.html?s=your_room_id
+http://4loopph.github.io/projects/projects/tessa/presentation.html?s=tEs$@486759
+```
+OR
+```
+http://tessa.cc/presentation.html?s=tEs$@486759
 ```
 
 ## How to publish yourself?
