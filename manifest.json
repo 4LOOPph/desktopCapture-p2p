@@ -1,7 +1,7 @@
 {
     "name": "TESSA Presentation",
     "author": "4LOOP",
-    "version": "1.5",
+    "version": "1.6",
     "manifest_version": 2,
     "minimum_chrome_version": "34",
     "description": "Capture full-screen or specific application's screen on any HTTPs domain!",

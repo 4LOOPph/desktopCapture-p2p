@@ -8,14 +8,24 @@
 chrome.browserAction.onClicked.addListener(captureDesktop);
 
 var openpluginURL = '';
+var deviceUUID = '';
+var s_stream = null;
 
 chrome.runtime.onMessageExternal.addListener(function(request, sender, sendResponse) {
     console.log('onMessageExternal request: ',request);
     console.log('onMessageExternal sender: ',sender);
 
-    openpluginURL = request.openplugin;
+    if(request.openplugin){
+        openpluginURL = request.openplugin;
+        deviceUUID = request.deviceUUID;
 
-    captureDesktop();
+        captureDesktop();
+    }else if(request.action){
+      if(request.action == 'close'){
+            s_stream.getVideoTracks()[0].stop();
+      }
+    }
+
 });
 
 window.addEventListener('offline', function() {
@@ -65,16 +75,21 @@ var constraints;
 var min_bandwidth = 512;
 var max_bandwidth = 1048;
 var room_password = '';
-var room_id = 'tEs$@486759';
+// var room_id = 'tEs$@486759';
 var isAudio = false;
 
 function onAccessApproved(chromeMediaSourceId) {
+    var popup_width = 600;
+    var popup_height = 170;
+
     if (!chromeMediaSourceId) {
         setDefaults();
         chrome.windows.create({
             url: "data:text/html,<h1>User denied to share his screen.</h1>",
             type: 'popup',
             width: screen.width / 2,
+            top: parseInt((screen.height / 2) - (popup_height / 2)),
+            left: parseInt((screen.width / 2) - (popup_width / 2)),
             height: 170
         });
         return;
@@ -96,7 +111,7 @@ function onAccessApproved(chromeMediaSourceId) {
         }
 
         if (items['room_id']) {
-            room_id = items['room_id'];
+            deviceUUID = items['deviceUUID'];
         }
 
         var _resolutions = items['resolutions'];
@@ -176,6 +191,8 @@ function onAccessApproved(chromeMediaSourceId) {
             return;
         }
 
+        s_stream = stream;
+
         chrome.browserAction.setTitle({
             title: 'Connecting to WebSockets server.'
         });
@@ -183,6 +200,7 @@ function onAccessApproved(chromeMediaSourceId) {
         chrome.browserAction.disable();
 
         stream.onended = function() {
+            console.log('stream.onended');
             setDefaults();
             chrome.runtime.reload();
         };
@@ -305,8 +323,8 @@ function setupRTCMultiConnection(stream) {
 
     connection.channel = connection.sessionid = connection.userid;
 
-    if (room_id && room_id.length) {
-        connection.channel = connection.sessionid = connection.userid = room_id;
+    if (deviceUUID && deviceUUID.length) {
+        connection.channel = connection.sessionid = connection.userid = deviceUUID;
     }
 
     connection.autoReDialOnFailure = true;
@@ -563,8 +581,13 @@ if (matchArray && matchArray[2]) {
 // Check whether new version is installed
 chrome.runtime.onInstalled.addListener(function(details) {
     if (details.reason == 'install') {
+      var popup_width = 600;
+      var popup_height = 170;
+      
         chrome.tabs.create({
-            url: 'chrome://extensions/?options=' + chrome.runtime.id
+            url: 'chrome://extensions/?options=' + chrome.runtime.id,
+            top: parseInt((screen.height / 2) - (popup_height / 2)),
+            left: parseInt((screen.width / 2) - (popup_width / 2))
         });
     }
 });
