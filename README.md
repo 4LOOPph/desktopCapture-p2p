@@ -4,7 +4,7 @@ This chrome extension not only captures content of screen, but also provides mul
 
 ## How to install?
 
-<a target="_blank" href="https://chrome.google.com/webstore/detail/webrtc-desktop-sharing/klaagnfcilpkdeicdamepejjmaoahple"><img alt="Try it now" src="https://raw.github.com/GoogleChrome/chrome-app-samples/master/tryitnowbutton_small.png" title="Click here to install this sample from the Chrome Web Store"></img></a>
+<a target="_blank" href="https://chrome.google.com/webstore/detail/tessa-presentation/abggimbnoanedfgibfmkilplcmehkfln"><img alt="Try it now" src="https://raw.github.com/GoogleChrome/chrome-app-samples/master/tryitnowbutton_small.png" title="Click here to install this sample from the Chrome Web Store"></img></a>
 
 * https://chrome.google.com/webstore/detail/tessa-presentation/abggimbnoanedfgibfmkilplcmehkfln
 
