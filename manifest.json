@@ -29,7 +29,7 @@
         "img/desktopCapture48.png"
     ],
     "externally_connectable": {
-        "matches": ["http://localhost/*", "*://4loopph.github.io/projects/*", "*://*.tessa.cc/*","*://*.tessa.io/*","*://*.tessa.*/*","*://*.*.*/*"]
+        "matches": ["http://localhost/*", "*://4loopph.github.io/projects/*", "*://*.tessa.cc/*","*://*.tessa.io/*"]
     },
     "options_ui": {
         "page": "options.html",
